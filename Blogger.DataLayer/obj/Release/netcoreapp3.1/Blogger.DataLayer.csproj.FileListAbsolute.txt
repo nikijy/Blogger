@@ -1,0 +1,12 @@
+F:\Blogger\Blogger\Blogger.DataLayer\bin\Release\netcoreapp3.1\Blogger.DataLayer.deps.json
+F:\Blogger\Blogger\Blogger.DataLayer\bin\Release\netcoreapp3.1\Blogger.DataLayer.runtimeconfig.json
+F:\Blogger\Blogger\Blogger.DataLayer\bin\Release\netcoreapp3.1\Blogger.DataLayer.runtimeconfig.dev.json
+F:\Blogger\Blogger\Blogger.DataLayer\bin\Release\netcoreapp3.1\Blogger.DataLayer.dll
+F:\Blogger\Blogger\Blogger.DataLayer\bin\Release\netcoreapp3.1\Blogger.DataLayer.pdb
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.csprojAssemblyReference.cache
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.AssemblyInfoInputs.cache
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.AssemblyInfo.cs
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.csproj.CoreCompileInputs.cache
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.dll
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.pdb
+F:\Blogger\Blogger\Blogger.DataLayer\obj\Release\netcoreapp3.1\Blogger.DataLayer.genruntimeconfig.cache
