@@ -1,0 +1,99 @@
+﻿@using Blogger.Core.Convertors
+@model IEnumerable<Blogger.Core.DTOs.News.ShowPopularNewsViewModel>
+@{
+    ViewData["Title"] = "جستجو";
+}
+
+
+<div class="post-wrapper pt-100">
+    <!-- Start post Area -->
+    <section class="post-area">
+        <div class="container">
+            <div class="row justify-content-center d-flex">
+                <div class="col-lg-4 sidebar-area" style="direction: rtl">
+                    <div class="single_widget search_widget">
+                        <form action="/Home/Search" method="get">
+                            <div id="imaginary_container">
+                                <div class="input-group stylish-input-group">
+
+                                    <input type="text" class="form-control" name="q" placeholder="جستجو...">
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <span class="lnr lnr-magnifier"></span>
+                                        </button>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                 
+                    @await Component.InvokeAsync("CategoryComponent")
+                    @await Component.InvokeAsync("RecentNewsInArchiveComponent")
+                 
+                    @await Component.InvokeAsync("TagsComponent")
+                </div>
+                <div class="col-lg-8">
+                    <h4 style="direction: rtl;">تعداد "@Model.Count()" با عبارت "@ViewBag.Name" یافت شد </h4>
+
+                    <div class="post-lists search-list">
+                        @foreach (var item in Model)
+                        {
+                            <div class="single-list flex-row d-flex">
+                                <div class="detail col-md-8" style="direction: rtl">
+                                    <a href="/News/ShowNews/@item.NewsId">
+                                        <h4 class="pb-20">
+                                            @item.Title
+                                        </h4>
+                                    </a>
+                                    <p>
+                                        @item.ShortDescription
+                                    </p>
+                                    <p class="footer pt-20">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                        <a href="#">@item.Likes لایک</a> <i class="ml-20 fa fa-comment-o" aria-hidden="true"></i> <a href="#">@item.Comments نظر</a>
+                                    </p>
+                                </div>
+                                <div class="thumb">
+                                    <div class="date">
+                                        <p style="height: 5px;">@item.CreateDate.ToShamsi()</p><br>
+                                    </div>
+                                    <img src="/NewsImages/@item.ImageName" alt="" class="thumbnail" style="height: 300px; width: 300px;">
+                                </div>
+                            </div>
+                        }
+
+                        <div class="justify-content-center d-flex">
+                            @if (ViewBag.count > 1)
+                            {
+                                <nav>
+                                    <ul class="pagination">
+                                        @if (ViewBag.PageCount % 8 != 0)
+                                        {
+                                            @for (int i = 1; i <= ((int) ViewBag.PageCount + 1); i++)
+                                            {
+                                                <li class="@(((int) ViewBag.PageID == i) ? "active" : "")"><a class="page-link" href="/News/Archive?pageId=@i">@i</a></li>
+
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            @for (int i = 1; i <= (int) ViewBag.PageCount; i++)
+                                            {
+                                                <li class="@(((int) ViewBag.PageID == i) ? "active" : "")"><a class="page-link" href="/News/Archive?pageId=@i">@i</a></li>
+
+                                            }
+                                        }
+                                    </ul>
+                                </nav>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End post Area -->
+</div>

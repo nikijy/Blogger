@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "خبرنامه";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-10" style="direction: rtl">
+    <p>خبرنامه فروشگاه شانل</p>
+    @if (TempData["success"] != null)
+    {
+        <p style="color: green;">@TempData["success"]</p>
+    }
+    <form asp-action="SendEmailForNewsLetter" asp-controller="Users" asp-area="Admin">
+        <textarea class="col-lg-10" style="height: 100px;" name="bodyText" placeholder="متن خبرنامه"></textarea>
+        <input type="submit" value="ارسال" class="btn btn-success"/>
+    </form>
+</div>
+

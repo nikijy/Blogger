@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Blogger.Core.DTOs.News.ShowCategoryViewModel>
+
+<div class="single_widget cat_widget">
+    <h4 class="text-uppercase pb-20">گروه های خبری</h4>
+    <ul>
+       @foreach (var item in Model)
+       {
+           <li>
+               <a href="/Group/@item.CategoryId/@item.Title">@item.Title <span>@item.Count</span></a>
+           </li>
+       }
+    </ul>
+</div>

@@ -1,0 +1,27 @@
+﻿@model Blogger.DataLayer.Entities.News.Category
+
+@{
+    ViewData["Title"] = "حذف دسته بندی";
+    Layout = null;
+}
+
+<h1>حذف دسته بندی</h1>
+
+<h3>آیا از حذف دسته بندی{@Model.Title}مطمئن هستید؟</h3>
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+       
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CategoryId" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+    
+    </form>
+</div>

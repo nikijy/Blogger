@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Blogger.Core.DTOs.News.ShowTagsInArchiveViewModel>
+
+<div class="single_widget tag_widget">
+    <h4 class="text-uppercase pb-20">برچسب ها</h4>
+    <ul>
+        @foreach (var items in Model)
+        {
+            @foreach (var item in items.Tags.Split('-'))
+            {
+
+                <li><a href="/Home/Search?q=@item">@item</a></li>
+        
+            }
+        }
+       
+    </ul>
+</div>

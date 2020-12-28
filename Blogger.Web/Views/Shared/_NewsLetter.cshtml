@@ -1,0 +1,29 @@
+﻿<div class="col-lg-6  col-md-12">
+    <div class="single-footer-widget newsletter">
+        <h6>خبرنامه</h6>
+        <p>ایمیل خود را وارد کنید تا آخرین خبرها را در ایمیل خود داشته باشید</p>
+        @if (TempData["message"] != null)
+        {
+            <p style="color: green;">@TempData["message"]</p>
+        }
+        @if (TempData["error"] != null)
+        {
+            <p style="color: red;">@TempData["error"]</p>
+        }
+        <div>
+            <form asp-action="AddEmailForNewsLetter" asp-controller="Home" method="post">
+                <input type="hidden" />
+                <div asp-validation-summary="All"></div>
+                <div class="form-group row" style="width: 100%">
+                    <div class="col-lg-8 col-md-12">
+                        <input name="Email" placeholder="ایمیل خود را وارد کنید" type="email">
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <input type="submit" value="ثبت" class="btn btn-success"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@using Blogger.Core.Convertors
+@model IEnumerable<Blogger.Core.DTOs.News.ShowRecentNewsViewModel>
+
+    <section class="category-area section-gap" id="news">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-70 col-lg-8">
+                    <div class="title text-center">
+                        <h1 class="mb-10">جدیدترین خبرهای ارسالی</h1>
+                        <p>
+                           ...جدیدترین خبرها را درسایت بلاگر بخوانید
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="active-cat-carusel">
+               @foreach (var item in Model)
+               {
+                   <div class="item single-cat">
+                       <img dir="rtl" src="/NewsImages/@item.ImageName" alt="" class="thumbnail" style="height: 300px; width: 300px;">
+                       <p class="date">@item.CreateDate.ToShamsi()</p>
+                       <h4 dir="rtl"><a href="/News/ShowNews/@item.NewsId">@item.Title </a></h4>
+                   </div>
+               }
+            </div>
+        </div>
+    </section>

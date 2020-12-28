@@ -1,0 +1,71 @@
+﻿@using Blogger.Core.Convertors
+@model Blogger.DataLayer.Entities.News.News
+
+@{
+    ViewData["Title"] = "جزئیات خبر";
+}
+
+<h1>جزئیات خبر</h1>
+
+<div>
+   
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Visit)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Visit)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Likes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Likes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+        <dd class = "col-sm-10">
+          <img src="/NewsImages/@Model.ImageName" class="thumbnail" style="height: 100px; width: 100px;"/>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd class = "col-sm-10">
+           <label>@Model.CreateDate.ToShamsi()</label>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.Title)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NewsId">ویرایش</a> 
+</div>

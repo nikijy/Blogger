@@ -1,0 +1,41 @@
+﻿@using Blogger.Core.Convertors
+@model IEnumerable<Blogger.Core.DTOs.News.ShowPopularNewsViewModel>
+
+<section class="travel-area section-gap" id="travel" dir="rtl">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">پربازدیدترین خبر ها</h1>
+                    <p>
+                       پربازدیدترین خبرهای سایت بلاگر را بخوانید...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="single-travel media pb-70">
+                        <img class="img-fluid d-flex  mr-3 thumbnail" src="/NewsImages/@item.ImageName" alt="" style="height: 300px; width: 300px;">
+                        <div class="dates">
+                            <p>@item.CreateDate.ToShamsi()</p>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0"><a href="/News/ShowNews/@item.NewsId">@item.Title</a></h4>
+                            <p>
+                              @item.ShortDescription
+                            </p>
+                            <div class="meta-bottom d-flex justify-content-between">
+                                <p><span class="lnr lnr-heart"></span> @item.Likes لایک</p>
+                                <p><span class="lnr lnr-bubble"></span> @item.Comments نظرات</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <a href="#" class="primary-btn load-more pbtn-2 text-uppercase mx-auto mt-60">مطالب بیشتر </a>
+    </div>
+</section>

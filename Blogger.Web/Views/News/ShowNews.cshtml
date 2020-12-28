@@ -1,0 +1,134 @@
+﻿@using Blogger.Core.Convertors
+@model Blogger.DataLayer.Entities.News.News
+
+@{
+    ViewData["Title"] = "ShowNews";
+}
+
+<div class="post-wrapper pt-100">
+    <!-- Start post Area -->
+    <section class="post-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 sidebar-area" style="direction: rtl">
+                    <partial name="_Search" />
+                  
+                    @await Component.InvokeAsync("CategoryComponent")
+                    @await Component.InvokeAsync("RecentNewsInArchiveComponent")
+                
+                    @await Component.InvokeAsync("TagsComponent")
+                </div>
+                <div class="col-lg-8" style="direction: rtl">
+                    <div class="single-page-post">
+                        <img class="img-fluid" src="/NewsImages/@Model.ImageName" alt="" Class="thumbnail">
+                        <div class="top-wrapper ">
+                            <div class="row d-flex justify-content-between">
+                                <h2 class="col-lg-8 col-md-12 text-uppercase">
+                                    @Model.Title
+                                </h2>
+                                <div class="col-lg-4 col-md-12 right-side d-flex justify-content-end">
+                                    <div class="desc">
+                                        <h3>تاریخ : @Model.CreateDate.ToShamsi()</h3>
+                                    </div>
+                                    <div class="user-img">
+                                        <img src="img/user.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tags">
+                            <ul>
+                                @foreach (var item in Model.Tags.Split('-'))
+                                {
+                                    <li><a href="/Home/Search?q=@item">@item</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="single-post-content">
+                            <p>
+                                @Model.ShortDescription
+                            </p>
+                            <p>
+                                @Model.Text
+                            </p>
+                        </div>
+                        <div class="bottom-wrapper">
+                            <div class="row">
+                               @if (User.Identity.IsAuthenticated)
+                               {
+                                   <div class="col-lg-4 single-b-wrap col-md-12">
+                                       <a href="/News/Command/@Model.NewsId?command=liked"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                       پسندیدم
+                                   </div>
+                               
+                               }
+                               else
+                               {
+                                   <div class="col-lg-4 single-b-wrap col-md-12 disabled">
+                                       <a href="#"><i class="fa fa-heart-o disabled" aria-hidden="true"></i></a>
+                                       پسندیدم
+                                       <div type="text" class="help-block">برای رای دهی لطفا ابتدا <a href="/Login">وارد سایت</a> شوید</div>
+                                   </div>
+                               
+                               }
+                               
+                                <div class="col-lg-4 single-b-wrap col-md-12">
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Start comment-sec Area -->
+                        <section class="comment-sec-area pt-80 pb-80" id="commentList">
+                            @await Component.InvokeAsync("ShowCommentsComponent")
+                        </section>
+                        <!-- End comment-sec Area -->
+                        <!-- Start commentform Area -->
+                        <section class="commentform-area  pb-120 pt-80 mb-100">
+                            <div class="container">
+                                <h5 class="text-uppercas pb-50">نظرتان را بیان کنید</h5>
+                                <div class="row flex-row d-flex">
+                                    <div class="col-lg-6">
+                                        <div asp-validation-summary="All"></div>
+                                        <input name="name" placeholder="نام خود را وارد کنید" onfocus="this.placeholder = ''" onblur="this.placeholder = 'نام خود را وارد کنید'" class="common-input mb-20 form-control" required="" type="text" id="txtName">
+                                        <input name="email" placeholder="ایمیل خود را وارد کنید" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ایمیل خود را وارد کنید'" class="common-input mb-20 form-control" required="" type="email" id="txtEmail">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <textarea class="form-control mb-10" name="message" placeholder="متن نظر" onfocus="this.placeholder = ''" onblur="this.placeholder = 'متن نظر'" required="" id="txtComment"></textarea>
+                                        <input type="button" class="primary-btn mt-20" onclick="addComment()" value="ارسال نظر">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- End commentform Area -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End post Area -->
+</div>
+<script>
+    function addComment() {
+        $.ajax({
+            url: "/News/AddComment/" + @Model.NewsId,
+            type: "Get",
+            data: { name: $("#txtName").val(), email: $("#txtEmail").val(), comment: $("#txtComment").val() }
+        }).done(function(result) {
+
+            $("#commentList").html(result);
+            $("#txtName").val("");
+            $("#txtEmail").val("");
+            $("#txtComment").val("");
+
+        });
+    }
+</script>

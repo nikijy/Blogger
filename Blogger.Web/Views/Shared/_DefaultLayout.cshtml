@@ -1,0 +1,100 @@
+﻿
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <partial name="_MetaTags" />
+    <!-- Site Title -->
+    <title>خبرنامه</title>
+
+    <partial name="_Styles" />
+</head>
+<body>
+
+    <!-- Start Header Area -->
+    <header class="default-header" dir="rtl">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="/img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li><a href="/Home/Index">صفحه اصلی</a></li>
+                        <li><a href="/News/Archive">آرشیو خبرها</a></li>
+                      
+                        <li><a href="/Register">ثبت نام</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="/User/User/Index">@User.Identity.Name خوش آمدید</a></li>
+                            <li><a href="/Logout">خروج</a></li>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="/Login">ورود</a></li>
+                        }
+                      
+                        <!-- Dropdown -->
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Header Area -->
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home" data-parallax="scroll" data-image-src="/img/header-bg.jpg" dir="rtl">
+        <div class="overlay-bg overlay"></div>
+        <div class="container">
+            <div class="row fullscreen">
+                <div class="banner-content d-flex align-items-center col-lg-12 col-md-12">
+                    <div class="container">
+                        <div class="row justify-content-center align-items-center d-flex">
+                            <div class="col-lg-8">
+                                <form method="get" action="/Home/Search">
+                                    <div id="imaginary_container">
+                                        <div class="input-group stylish-input-group">
+                                            <input type="text" class="form-control" placeholder="دنبال چه خبری هستی..."
+                                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'دنبال چه خبری هستی... '"
+                                                   required="" name="q">
+                                            <span class="input-group-addon">
+                                                <button type="submit">
+                                                    <span class="lnr lnr-magnifier"></span>
+                                                </button>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </form>
+                                <p class="mt-20 text-center text-white">جستجوی خبرها از بین بی نهایت خبر</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- End banner Area -->
+    @RenderBody()
+    <!-- start footer Area -->
+    <partial name="_Footer" />
+    <!-- End footer Area -->
+
+    <script src="/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper./js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/parallax.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

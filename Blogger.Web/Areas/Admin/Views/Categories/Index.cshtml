@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Blogger.DataLayer.Entities.News.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>دسته بندی ها</h1>
+
+<p>
+    <a class="btn btn-success" id="btnNewCategory">افزودن دسته بندی جدید</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    <a class="btn btn-sm btn-warning" onclick="editCategory(@item.CategoryId)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" onclick="deleteCategory(@item.CategoryId)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*modal*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+@*end modal*@
+
+@section Scripts
+{
+
+    <script src="~/js/modal.js"></script>
+    <script>
+        $("#btnNewCategory").click(function () {
+
+            $.get("/Admin/Categories/Create", function (result) {
+
+                $("#myModal").modal();
+                $("#myModalLabel").html("افزودن  دسته بندی جدید");
+                $("#myModalBody").html(result);
+            });
+
+        });
+
+        function editCategory(id) {
+            $.get("/Admin/Categories/Edit/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("ویرایش دسته بندی ");
+                $("#myModalBody").html(result);
+            });
+        }
+
+
+        function deleteCategory(id) {
+            $.get("/Admin/Categories/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("حذف دسته بندی");
+                $("#myModalBody").html(result);
+            });
+        }
+
+    </script>
+}

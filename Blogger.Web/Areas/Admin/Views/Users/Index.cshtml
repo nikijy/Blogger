@@ -1,0 +1,75 @@
+﻿@using Blogger.Core.Convertors
+@model IEnumerable<Blogger.DataLayer.Entities.Users.User>
+
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<h1>کاربران</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Biography)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Biography)
+                </td>
+                <td>
+                    <label>@item.RegisterDate.Value.ToShamsi()</label>
+                </td>
+
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.UserId">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (ViewBag.count > 1)
+{
+    <nav>
+        <ul class="pagination">
+            @if (ViewBag.PageCount % 12 != 0)
+            {
+                @for (int i = 1; i <= ((int)ViewBag.PageCount + 1); i++)
+                {
+                    <li class="@(((int) ViewBag.PageID == i) ? "active" : "")"><a class="page-link" href="/Admin/Users/Index?pageId=@i">@i</a></li>
+
+                }
+            }
+
+            else
+            {
+                @for (int i = 1; i <= (int)ViewBag.PageCount; i++)
+                {
+                    <li class="@(((int)ViewBag.PageID==i)?"active":"")"><a class="page-link" href="/Admin/users/Index?pageId=@i">@i</a></li>
+
+                }
+            }
+        </ul>
+    </nav>
+}

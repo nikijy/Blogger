@@ -1,0 +1,93 @@
+﻿@using Blogger.Core.Convertors
+@model IEnumerable<Blogger.DataLayer.Entities.News.News>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>اخبار</h1>
+
+<p>
+    <a asp-action="Create">ایجاد خبر جدید</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Title)
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visit)
+                </td>
+                <td>
+                    <img src="/NewsImages/@item.ImageName" style="height: 100px;width:100px;" />
+                </td>
+                <td>
+                    <label>@item.CreateDate.ToShamsi()</label>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Title)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NewsId">ویرایش</a> |
+                    <a asp-action="Details" asp-route-id="@item.NewsId">جزئیات</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NewsId">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (ViewBag.count > 1)
+{
+    <nav>
+        <ul class="pagination">
+            @if (ViewBag.PageCount % 12 != 0)
+            {
+                @for (int i = 1; i <= ((int)ViewBag.PageCount + 1); i++)
+                {
+                    <li class="@(((int) ViewBag.PageID == i) ? "active" : "")"><a class="page-link" href="/Admin/News/Index?pageId=@i">@i</a></li>
+
+                }
+            }
+
+            else
+            {
+                @for (int i = 1; i <= (int)ViewBag.PageCount; i++)
+                {
+                    <li class="@(((int)ViewBag.PageID==i)?"active":"")"><a class="page-link" href="/Admin/News/Index?pageId=@i">@i</a></li>
+
+                }
+            }
+        </ul>
+    </nav>
+}

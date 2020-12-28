@@ -1,0 +1,29 @@
+﻿@using Blogger.Core.Convertors
+@model IEnumerable<Blogger.DataLayer.Entities.News.Comment>
+<div class="container">
+    <div class="row flex-column">
+       
+        <div class="text-uppercase pb-80">
+            <i class="fa fa-comment-o" aria-hidden="true"></i> @Model.Count() نظر
+        </div>
+
+        <br>
+        @foreach (var item in Model)
+        {
+            <div class="comment-list">
+                <div class="single-comment justify-content-between d-flex">
+                    <div class="user justify-content-between d-flex">
+                        <div class="desc">
+                            <h5><a href="#">@item.Name</a></h5>
+                            <p class="date">@item.CreateDate.ToShamsi() </p>
+                            <p class="comment">
+                               @item.NewsComment
+                            </p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        }
+    </div>
+</div>
