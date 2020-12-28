@@ -1,0 +1,15 @@
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.Core.deps.json
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.Core.runtimeconfig.json
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.Core.runtimeconfig.dev.json
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.Core.dll
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.Core.pdb
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.DataLayer.dll
+F:\Blogger\Blogger\Blogger.Core\bin\Release\netcoreapp3.1\Blogger.DataLayer.pdb
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.csprojAssemblyReference.cache
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.AssemblyInfoInputs.cache
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.AssemblyInfo.cs
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.csproj.CoreCompileInputs.cache
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.csproj.CopyComplete
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.dll
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.pdb
+F:\Blogger\Blogger\Blogger.Core\obj\Release\netcoreapp3.1\Blogger.Core.genruntimeconfig.cache
